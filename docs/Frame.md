@@ -170,6 +170,15 @@ erDiagram
 
 我们将证明上述关系模式至少满足 3NF（甚至 BCNF）。
 
+$$
+F = \{ 
+\text{plate\_number} \to \text{fleet\_id}, \quad
+\text{plate\_number} \to \text{max\_weight}, \quad
+\text{plate\_number} \to \text{max\_volume}, \quad
+\text{plate\_number} \to \text{status}, \\
+ \}
+$$
+
 **分析示例：Vehicle 表**
 *   **函数依赖集 F**: { `plate_number` -> `fleet_id`, `plate_number` -> `max_weight`, `plate_number` -> `max_volume`, `plate_number` -> `status` }
 *   **分析**: 唯一的候选键是 `plate_number`。F 中所有函数依赖的左部都是候选键。不存在非主属性对码的传递依赖。因此满足 BCNF。

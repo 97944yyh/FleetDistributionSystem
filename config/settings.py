@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "managersystem",
 ]
 
 MIDDLEWARE = [
@@ -74,8 +75,16 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "mssql",
+        "NAME": "FleetDistributionDB",  # 您在 SQL 脚本中创建的数据库名称
+        "USER": "",  # 如果使用 Windows 身份验证，留空
+        "PASSWORD": "",  # 如果使用 Windows 身份验证，留空
+        "HOST": "localhost",  # 或者是您的服务器地址，例如 ".\SQLEXPRESS" 或 "127.0.0.1"
+        "PORT": "",  # 默认 1433
+        "OPTIONS": {
+            "driver": "ODBC Driver 17 for SQL Server",  # 请确保您的系统安装了相应的 ODBC 驱动
+            # "extra_params": "TrustServerCertificate=yes", # 如果遇到 SSL 证书报错，请取消注释这一行
+        },
     }
 }
 
